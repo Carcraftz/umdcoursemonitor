@@ -36,10 +36,7 @@ type Course struct {
 
 func main() {
 	m, _ := mimic.Chromium(mimic.BrandChrome, latestVersion)
-	purl, _ := url.Parse("http://localhost:8888")
-	client := &http.Client{Transport: m.ConfigureTransport(&http.Transport{
-		Proxy: http.ProxyURL(purl),
-	})}
+	client := &http.Client{Transport: m.ConfigureTransport(&http.Transport{})}
 	go getSeats("https://app.testudo.umd.edu/soc/202301/CMSC/CMSC132", client, "https://discord.com/api/webhooks/1050460562628292679/2n47GlZTG3g4OQit5fm_VBzLRDFRqlAHNo0vSGF_QSP5WYhgaOmRZC33rWmmXEs6pWQD")
 	go getSeats("https://app.testudo.umd.edu/soc/202301/MATH/MATH240", client, "https://discord.com/api/webhooks/1050460668320546856/Fo9P3u3tb6WsVYfLyWm9uvrz5RaBut4MsYgNZZCxd7ERvak89R0lzQbNC1AjNOCCFYyQ")
 	go getSeats("https://app.testudo.umd.edu/soc/202301/AASP/AASP298L", client, "https://discord.com/api/webhooks/1050460762717552720/6LNp1OOTx9mVlI2yJhcFU18FQULAF15owKMmimVoZ7JWDehxxZ8e4vDES487CTZwwQZE")
